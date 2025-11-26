@@ -23,6 +23,7 @@ public class GoodsController {
         List<Goods> goodsList = goodsService.getGoodsList();
         Map<String,Object> map = new HashMap<>();
         map.put("goodList",goodsList);
+        String a = "";
         return new BaseResult(true,999,"操作成功",map);
     }
 }
