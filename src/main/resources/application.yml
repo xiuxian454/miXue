@@ -1,0 +1,39 @@
+server:
+  port: 8085
+
+spring:
+  #热部署配置
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+# 文件上传
+#  servlet:
+#    multipart:
+#      max-file-size: 10MB
+#      max-request-size: 20MB
+  datasource:
+    username: root
+    password: 1234
+    url: jdbc:mysql://localhost:3306/fruits?serverTimezone=Asia/Shanghai&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    #德鲁伊连接池
+    druid:
+      max-active: 10
+      min-idle: 0
+      initial-size: 5
+
+mybatis-plus:
+  #默认值 classpath:mapper/*.xml 可以不写
+  #mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.dfrz.mixue.model
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  #    配置逻辑删除
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-not-delete-value: 0
+      logic-delete-value: 1
